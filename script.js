@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', setupMatrix);
 // --- Typewriter Effect ---
 const typewriterElement = document.getElementById('typewriter');
 if (typewriterElement) {
-    const roles = ['Full-Stack Developer', 'Data Analyst', 'React Enthusiast', 'Problem Solver'];
+    const roles = ['Full-Stack Developer', 'Data Analyst', 'Problem Solver'];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;

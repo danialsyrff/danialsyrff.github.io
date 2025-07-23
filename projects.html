@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - Your Name</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(74, 222, 128, 0.1), 0 4px 6px -2px rgba(74, 222, 128, 0.05);
+        }
+        .filter-btn {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .filter-btn.active {
+            background-color: #4ade80;
+            color: #0a0a0a;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 left-0 right-0 z-20 glass-effect">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="./index.html" class="text-2xl font-bold text-white">Your Name</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="./index.html#about" class="hover:text-green-400 transition-colors">About</a>
+                <a href="./index.html#skills" class="hover:text-green-400 transition-colors">Skills</a>
+                <a href="./projects.html" class="text-green-400 font-bold">Projects</a>
+                <a href="./index.html#experience" class="hover:text-green-400 transition-colors">Experience</a>
+                <a href="./index.html#education" class="hover:text-green-400 transition-colors">Education</a>
+                <a href="./index.html#contact" class="hover:text-green-400 transition-colors">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="./index.html#about" class="block py-2 hover:text-green-400 transition-colors">About</a>
+            <a href="./index.html#skills" class="block py-2 hover:text-green-400 transition-colors">Skills</a>
+            <a href="./projects.html" class="block py-2 text-green-400 font-bold">Projects</a>
+            <a href="./index.html#experience" class="block py-2 hover:text-green-400 transition-colors">Experience</a>
+            <a href="./index.html#education" class="block py-2 hover:text-green-400 transition-colors">Education</a>
+            <a href="./index.html#contact" class="block py-2 hover:text-green-400 transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10">
+        <section id="all-projects" class="py-20">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl font-bold text-center mb-4 text-white">My Portfolio</h1>
+                <p class="text-center text-slate-400 mb-12 max-w-2xl mx-auto">Here's a collection of my work. Use the filters to navigate through different categories of projects I've developed.</p>
+
+                <!-- Filter Buttons -->
+                <div id="filter-container" class="flex justify-center space-x-2 md:space-x-4 mb-12">
+                    <button class="filter-btn active font-semibold py-2 px-4 rounded-full border border-gray-700" data-filter="all">All</button>
+                    <button class="filter-btn font-semibold py-2 px-4 rounded-full border border-gray-700" data-filter="software">Software</button>
+                    <button class="filter-btn font-semibold py-2 px-4 rounded-full border border-gray-700" data-filter="data">Data</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Add all your projects here with the correct data-filter attribute -->
+                    <div class="project-card glass-effect rounded-lg overflow-hidden" data-category="software">
+                        <img src="src/assets/img/digidex-lite.png" alt="Project Screenshot" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">DigiDex Lite</h3>
+                            <p class="text-slate-400 mb-4">
+                                DigiDex Lite is a dynamic digital encyclopedia for Digimon, developed entirely with HTML, CSS, and JavaScript. The application connects to a public API to fetch and display creature data, allowing users to perform live searches, filter by evolutionary level, and sort the collection alphabetically. It also includes a key feature for users to save their favorite Digimon, creating a personalized Browse experience.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://digidex-lite.netlify.app/" class="text-green-400 hover:underline">Live Demo</a>
+                                <a href="#" class="text-slate-400 hover:text-white">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="project-card glass-effect rounded-lg overflow-hidden" data-category="data">
+                        <img src="/src/assets/img/fuel-prices.png" alt="Project Screenshot" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2 text-white">Malaysian Fuel Price Trend Analysis (2017-2025)</h3>
+                            <p class="text-slate-400 mb-4">
+                                This project analyzes weekly Malaysian fuel price trends from 2017 to 2025 using Python, Pandas, and Matplotlib. The analysis involved cleaning and preparing raw time-series data to visualize the price evolution of RON95, RON97, and Diesel. The key insight from the analysis is the clear visual evidence of government policy impacting consumer prices, particularly the stabilization of the subsidized RON95 price ceiling in contrast to the market-driven volatility of RON97. The project successfully demonstrates skills in time-series analysis, data cleaning, and generating data-driven insights from public economic data.
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <a href="https://colab.research.google.com/drive/1Y8AIk3vaWIgzHZ4OTmpFSz3sfxHtLmu6?usp=sharing" class="text-green-400 hover:underline">View Notebook</a>
+                                <a href="#" class="text-slate-400 hover:text-white">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-slate-500">
+        <p>&copy; <span id="current-year"></span> Danial Asyraff. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // --- Mobile Menu ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Project Filtering ---
+        const filterContainer = document.getElementById('filter-container');
+        const projectsGrid = document.getElementById('projects-grid');
+        const projectCards = projectsGrid.querySelectorAll('.project-card');
+
+        filterContainer.addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                // Update active button style
+                filterContainer.querySelector('.active').classList.remove('active');
+                e.target.classList.add('active');
+
+                const filterValue = e.target.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (filterValue === 'all' || filterValue === cardCategory) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        // --- Footer Year ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
