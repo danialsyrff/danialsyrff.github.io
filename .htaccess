@@ -1,11 +1,12 @@
 # Turn on the rewrite engine
 RewriteEngine On
 
+# Allow your IP address to access the site
+# RewriteCond %{REMOTE_ADDR} !^YOUR\.IP\.ADDRESS\.HERE$
+
+
 # Define the maintenance page
 RewriteCond %{REQUEST_URI} !/maintenance.html$
-
-# Allow your IP address to access the site
-RewriteCond %{REMOTE_ADDR} !^YOUR\.IP\.ADDRESS\.HERE$
 
 # Redirect all other traffic to the maintenance page with a 503 status
 RewriteRule .* /maintenance.html [R=503,L]
