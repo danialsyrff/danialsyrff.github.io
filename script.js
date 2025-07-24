@@ -125,7 +125,7 @@ if (contactForm) {
 
         // --- THIS IS THE NEW PART ---
         // 4. Define your n8n webhook URL
-        const webhookURL = 'https://n8n.vontechdigital.com:5678/webhook/0230bab0-5b1d-4cac-9569-eb5d94bdde6d';
+        const webhookURL = 'https://n8n.vontechdigital.com/webhook/0230bab0-5b1d-4cac-9569-eb5d94bdde6d';
 
         // 5. Send the data to the n8n webhook
         fetch(webhookURL, {
