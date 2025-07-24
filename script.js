@@ -106,15 +106,60 @@ revealElements.forEach(elem => {
 // --- Contact Form ---
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
+
 if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
+        // 1. Prevent the default form submission
         e.preventDefault();
-        formStatus.textContent = 'Thank you for your message!';
-        formStatus.className = 'text-green-400';
-        contactForm.reset();
-        setTimeout(() => {
-            formStatus.textContent = '';
-        }, 5000);
+
+        // 2. Give the user immediate feedback
+        formStatus.textContent = 'Sending...';
+        formStatus.className = 'text-slate-400'; // Neutral color while sending
+
+        // 3. Get the data from the form fields using their new IDs
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
+
+        // --- THIS IS THE NEW PART ---
+        // 4. Define your n8n webhook URL
+        const webhookURL = 'https://n8n.vontechdigital.com/webhook/0230bab0-5b1d-4cac-9569-eb5d94bdde6d';
+
+        // 5. Send the data to the n8n webhook
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => {
+            // Check if the request was successful
+            if (response.ok) {
+                // Use your original success logic
+                formStatus.textContent = 'Thank you for your message!';
+                formStatus.className = 'text-green-400';
+                contactForm.reset();
+            } else {
+                // Handle server errors (e.g., n8n workflow is inactive)
+                throw new Error('Something went wrong on the server.');
+            }
+        })
+        .catch(error => {
+            // Handle network errors (e.g., user is offline)
+            console.error('Fetch Error:', error);
+            formStatus.textContent = 'Oops! Could not send message. Please try again later.';
+            formStatus.className = 'text-red-400';
+        })
+        .finally(() => {
+            // Use your original timeout logic to clear the status message
+            setTimeout(() => {
+                formStatus.textContent = '';
+            }, 5000);
+        });
+        // --- END OF NEW PART ---
     });
 }
 
